@@ -46,9 +46,35 @@ remindersRouter
                 res.json(plants.map(RemindersService.serializeReminder))
             })
             .catch(next)
+    })
+    .patch(jsonBodyParser,(req,res,next)=>{
+        const {plant_id,user_id} = req.body
+        const reminderToUpdate = {plant_id,user_id}
+
+        RemindersService.updateReminder(
+            req.app.get('db'),
+            req.params.reminder_id
+        )
     })*/
 
-remindersRouter 
+    remindersRouter 
+    .route('/:reminder_id')
+    .patch(jsonBodyParser,(req,res,next)=>{
+        const {plant_id,user_id,remind_on} = req.body
+        const reminderToUpdate = {plant_id,user_id,remind_on}
+
+        RemindersService.updateReminder(
+            req.app.get('db'),
+            req.params.reminder_id,
+            reminderToUpdate
+        )
+            .then(numRowsAffected=>{
+                res.status(204).end()
+            })
+            .catch(next)
+    })
+
+/*remindersRouter 
     .route('/:plant_id/:user_id')
     .delete((req,res,next)=>{
         RemindersService.deleteReminder(
@@ -60,6 +86,6 @@ remindersRouter
                 res.status(204).end()
             })
             .catch(next)
-    })
+    })*/
 
 module.exports = remindersRouter

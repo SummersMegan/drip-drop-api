@@ -1,6 +1,5 @@
 const PlantsService = require('./src/plants/plants-service')
 
-
 const PlantsssService = {
     getAllPlants(db){
         return db   
@@ -8,6 +7,9 @@ const PlantsssService = {
             .select('*')
             .then(plants=>{
                 return plants.map(PlantsService.serializePlant)
+            })
+            .catch((err)=>{
+                console.log(err)
             })
             .finally(()=>{
                 db.destroy();

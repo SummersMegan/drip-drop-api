@@ -26,6 +26,11 @@ const RemindersService = {
             .where('reminders.user_id',user_id)
             .delete()
     },
+    updateReminder(db,id,newReminderFields){
+        return db('drip_drop_reminders')
+            .where({id})
+            .update(newReminderFields)
+    },
     serializePlant(plant){
         return {
             id: plant.id,

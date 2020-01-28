@@ -5,7 +5,6 @@ const PlantsService = {
         return db   
             .from('drip_drop_plants')
             .select('*')
-            .then((rows)=>{rows.json()})
     },
     serializePlant(plant){
         return {
