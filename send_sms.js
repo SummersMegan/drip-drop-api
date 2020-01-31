@@ -32,7 +32,7 @@ function callback(reminder){
 
         reminderId = reminder.reminder_id
         
-        fetch(`http://localhost:8025/api/reminders/${reminderId}`,{
+        fetch(`https://desolate-oasis-71104.herokuapp.com/api/reminders/${reminderId}`,{
             method: 'PATCH',
             body: JSON.stringify({
                 'remind_on': `${newWateringDate}`
@@ -48,7 +48,7 @@ function callback(reminder){
 
 }
 
-fetch('http://localhost:8025/api/sms')
+fetch('https://desolate-oasis-71104.herokuapp.com/api/sms')
     .then((res)=> {return res.json()})
     .then((json)=>{
         json.map(reminder=>callback(reminder))
