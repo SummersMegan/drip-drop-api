@@ -7,6 +7,8 @@ const { NODE_ENV } = require('./config')
 const plantsRouter = require('./plants/plants-router')
 const remindersRouter = require('./reminders/reminders-router')
 const smsRouter = require('./sms/sms-router')
+const usersRouter = require('./users/users-router')
+const authRouter = require('./auth/auth-router')
 
 const app = express()
 
@@ -25,6 +27,8 @@ app.get('/', (req, res) => {
 app.use('/api/plants',plantsRouter)
 app.use('/api/reminders',remindersRouter)
 app.use('/api/sms',smsRouter)
+app.use('/api/users',usersRouter)
+app.use('/api/auth',authRouter)
 
 //error handling middleware
 app.use(function errorHandler(error, req, res, next) {

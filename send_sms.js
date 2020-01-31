@@ -7,18 +7,21 @@ const client = require('twilio')(accountSid, authToken);
 
 const fetch = require('node-fetch');
 
-function callback(reminder){
-    
-    let unformattedDate = new Date
-    let currentDate = unformattedDate.toISOString().split('T')[0]
+console.log('hello')
 
+function callback(reminder){
+    console.log(reminder)
+    let unformattedDate = new Date()
+    console.log(unformattedDate)
+    let currentDate = unformattedDate.toISOString().split('T')[0]
+    console.log(currentDate)
     if(reminder.reminder_date == currentDate){
         
         client.messages
             .create({
                 body: `Don't forget to water your ${reminder.plant_name} today!`,
                 from: '+19253612644', //E.164 formatting
-                to: reminder.phone_number
+                to: `+1${reminder.phone_number}`
             })
             .then(message => console.log(message.sid));
         

@@ -5,6 +5,7 @@ const RemindersService = {
         return db   
             .from('drip_drop_plants AS plant')
             .select(
+                'plant.id AS plant_id',
                 'plant.name',
                 'plant.water_every',
                 'plant.watering_directions',
@@ -25,15 +26,16 @@ const RemindersService = {
             .where('reminders.plant_id',plant_id)
             .where('reminders.user_id',user_id)
             .delete()
+            .returning('*')
     },
     updateReminder(db,id,newReminderFields){
         return db('drip_drop_reminders')
             .where({id})
             .update(newReminderFields)
     },
-    serializePlant(plant){
+    serializeUsersPlant(plant){
         return {
-            id: plant.id,
+            id: plant.plant_id,
             name: xss(plant.name),
             water_every: plant.water_every,
             watering_directions: xss(plant.watering_directions),

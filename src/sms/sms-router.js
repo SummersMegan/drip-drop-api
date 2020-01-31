@@ -3,8 +3,6 @@ const path = require('path')
 const SmsService = require('./sms-service')
 
 const smsRouter = express.Router()
-const jsonBodyParser = express.json()
-
 
 smsRouter 
     .route('/')
