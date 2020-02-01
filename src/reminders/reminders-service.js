@@ -1,6 +1,11 @@
 const xss = require('xss')
 
 const RemindersService = {
+    getAllReminders(db){
+        return db 
+            .from('drip_drop_reminders AS reminders')
+            .select('*')
+    },
     getByUserId(db,user_id){
         return db   
             .from('drip_drop_plants AS plant')
@@ -46,7 +51,8 @@ const RemindersService = {
         return {
             id: reminder.id,
             plant_id: reminder.plant_id,
-            user_id: reminder.user_id
+            user_id: reminder.user_id,
+            remind_on: reminder.remind_on
         }
     }
 }

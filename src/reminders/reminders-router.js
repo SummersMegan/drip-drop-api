@@ -8,6 +8,13 @@ const jsonBodyParser = express.json()
 
 remindersRouter 
     .route('/')
+    .get((req,res,next)=>{
+        RemindersService.getAllReminders(req.app.get('db'))
+            .then(reminders => {
+                res.json(reminders.map(RemindersService.serializeReminder))
+            })
+            .catch(next)
+    })
     .post(jsonBodyParser, (req,res,next)=>{
         const {plant_id, user_id, remind_on} = req.body
         const newReminder = {plant_id, user_id, remind_on}
