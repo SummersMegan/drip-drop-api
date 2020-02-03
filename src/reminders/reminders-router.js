@@ -19,6 +19,12 @@ remindersRouter
         const {plant_id, user_id, remind_on} = req.body
         const newReminder = {plant_id, user_id, remind_on}
 
+        for (const field of ['plant_id','user_id','remind_on'])
+            if(!req.body[field])
+                return res.status(400).json({
+                    error: `Missing '${field}' in request body`
+                })
+
         RemindersService.postReminder(
             req.app.get('db'),
             newReminder

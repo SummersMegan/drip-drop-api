@@ -6,6 +6,13 @@ const PlantsService = {
             .from('drip_drop_plants')
             .select('*')
     },
+    postPlant(db, newPlant){
+        return db
+            .insert(newPlant)
+            .into('drip_drop_plants')
+            .returning('*')
+            .then(([plant])=>plant)
+    },
     serializePlant(plant){
         return {
             id: plant.id,
