@@ -16,7 +16,6 @@ usersRouter
     })
     .post(jsonBodyParser,(req,res,next)=>{
         const { first_name, last_name, password, email, phone_number } = req.body
-        console.log('hello')
 
 
         for (const field of ['first_name','last_name','password','email','phone_number'])

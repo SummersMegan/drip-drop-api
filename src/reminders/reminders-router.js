@@ -33,7 +33,7 @@ remindersRouter
                 res
                     .status(201)
                     //.location(path.posix.join(req.originalUrl,`${reminder.id}`))
-                    .json(newReminder)
+                    .json(RemindersService.serializeReminder(reminder))
             })
             .catch(next)
     })

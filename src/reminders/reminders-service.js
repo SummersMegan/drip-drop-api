@@ -24,6 +24,7 @@ const RemindersService = {
             .insert(newReminder)
             .into('drip_drop_reminders')
             .returning('*')
+            .then(([newReminder])=>newReminder)
     },
     deleteReminder(db,plant_id,user_id){
         return db   

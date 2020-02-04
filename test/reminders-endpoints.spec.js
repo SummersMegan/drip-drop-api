@@ -108,8 +108,9 @@ describe('Reminders Endpoints',function(){
                 helpers.seedReminders(db, testReminders)
             )
             
-            it.only(`responds 201, serialized reminder`, () => {
+            it(`responds 201, serialized reminder`, () => {
               const newReminder = {
+                id: 1,
                 plant_id:1,
                 user_id:2,
                 remind_on: '2020-02-02T00:00:00.000Z'
@@ -123,24 +124,22 @@ describe('Reminders Endpoints',function(){
                   expect(res.body.plant_id).to.eql(newReminder.plant_id)
                   expect(res.body.user_id).to.eql(newReminder.user_id)
                   expect(res.body.remind_on).to.eql(newReminder.remind_on)
-                  //expect(res.headers.location).to.eql(`/api/reminders/${res.body.id}`)
                 })
-                /*.expect(res =>
+                .expect(res =>
                   db
                     .from('drip_drop_reminders')
                     .select('*')
                     .where({ id: res.body.id })
                     .first()
                     .then(row => {
-        
-                      //expect(row.plant_id).to.eql(newReminder.plant_id)
+                      expect(row.plant_id).to.eql(newReminder.plant_id)
                       expect(row.user_id).to.eql(newReminder.user_id)
                       expect(row.remind_on).to.eql(newReminder.remind_on)      
                     })
                     .then(compareMatch => {
                       expect(compareMatch).to.be.true
                     })
-                )*/
+                )
             })
           })
     })
