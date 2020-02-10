@@ -76,6 +76,14 @@ remindersRouter
         const {plant_id,user_id,remind_on} = req.body
         const reminderToUpdate = {plant_id,user_id,remind_on}
 
+        const numberOfValues = Object.values(reminderToUpdate).filter(Boolean).length
+        if(numberOfValues === 0)
+            return res.status(400).json({
+                error:{
+                    message: `Request body must contain either 'plant_id', 'user_id' or 'remind_on'`
+                }
+            })
+
         RemindersService.updateReminder(
             req.app.get('db'),
             req.params.reminder_id,

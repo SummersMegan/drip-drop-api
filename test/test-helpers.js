@@ -83,9 +83,61 @@ function makeRemindersArray() {
         plant_id: 3,
         user_id: 1,
         remind_on: "2020-02-02T00:00:00.000Z"
+      },
+      {
+        id:4,
+        plant_id: 3,
+        user_id: 2,
+        remind_on: "2020-02-02T00:00:00.000Z"
       }
   ]
 }
+
+function makeExpectedSmsArray(){
+  return [
+    {
+      reminder_id: 1,
+      plant_name: 'test-plant-2',
+      water_every: 3,
+      phone_number: '12312345678',
+      reminder_date: "2020-02-02"
+    },
+    {
+      reminder_id: 2,
+      plant_name: 'test-plant-1',
+      water_every: 3,
+      phone_number: '12312345678',
+      reminder_date: "2020-02-02"
+    },
+    {
+      reminder_id: 3,
+      plant_name: 'test-plant-3',
+      water_every: 3,
+      phone_number: '12312345678',
+      reminder_date: "2020-02-02"
+    },
+    {
+      reminder_id: 4,
+      plant_name: 'test-plant-3',
+      water_every: 3,
+      phone_number: '12312345678',
+      reminder_date: "2020-02-02"
+    }
+  ]
+}
+
+function makeExpectedUser2RemindersArray(){
+  return [
+    {
+      id: 3,
+      name: 'test-plant-3',
+      water_every: 3,
+      watering_directions: 'test',
+      img: 'test',
+    }
+  ]
+}
+
 
 function makePlantsFixtures(){
   const testPlants = makePlantsArray()
@@ -253,4 +305,6 @@ module.exports = {
     seedMaliciousUser,
     seedMaliciousPlant,
     //seedPlantsTables,
+    makeExpectedUser2RemindersArray,
+    makeExpectedSmsArray
 }

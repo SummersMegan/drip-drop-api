@@ -35,7 +35,7 @@ describe('Plants Endpoints',function(){
             beforeEach('insert plants',()=>
                 helpers.seedPlants(db, testPlants)
             )
-            //DOESNT PASS 
+            
             it(`responds with 200 and all of the plants`,()=>{
                 const expectedPlants = testPlants
                 return supertest(app)

@@ -144,5 +144,106 @@ describe('Reminders Endpoints',function(){
           })
     })
 
+    describe(`GET /api/reminders/users/:user_id`,()=>{
+      context(`Given there are reminders for user in the database`,()=>{
+        beforeEach('insert plants',()=>
+          helpers.seedPlants(db, testPlants)
+        )
+        beforeEach('insert users',()=>
+          helpers.seedUsers(db, testUsers),
+        )
+        beforeEach('insert reminders',()=>
+          helpers.seedReminders(db, testReminders)
+        )
+
+        it(`responds with 200 and the user's plants`,()=>{
+          const userId = 2
+          const expectedResult = helpers.makeExpectedUser2RemindersArray()
+          
+          return supertest(app)
+            .get(`/api/reminders/users/${userId}`)
+            .expect(200,expectedResult)
+        })
+      })
+    })
+
+    describe(`DELETE /api/reminders/plants/:plant_id/users/:user_id`,()=>{
+      context(`Given there is a reminder with the correct plant_id and user_id`,()=>{
+        beforeEach('insert plants',()=>
+          helpers.seedPlants(db, testPlants)
+        )
+        beforeEach('insert users',()=>
+          helpers.seedUsers(db, testUsers),
+        )
+        beforeEach('insert reminders',()=>
+          helpers.seedReminders(db, testReminders)
+        )
+
+        it(`responds with 200 and the user's plants`,()=>{
+          const userId = 2
+          const plantId = 3
+
+          return supertest(app)
+            .delete(`/api/reminders/plants/${plantId}/users/${userId}`)
+            .expect(200,[{"plant":"3"}])
+        })
+      })
+    })
+
+    describe(`PATCH /api/reminders/:reminder_id`,()=>{
+      context('Given there are reminders in the database',()=>{
+        
+        beforeEach('insert plants',()=>
+          helpers.seedPlants(db, testPlants)
+        )
+        beforeEach('insert users',()=>
+          helpers.seedUsers(db, testUsers),
+        )
+        beforeEach('insert reminders',()=>
+          helpers.seedReminders(db, testReminders)
+        )
+
+        it('responds with 204',()=>{
+          const idToUpdate = 2
+          const updateReminder = {
+            plant_id: 2,
+            user_id: 2,
+            remind_on: "2021-03-02T00:00:00.000Z"
+          }
+          return supertest(app)
+            .patch(`/api/reminders/${idToUpdate}`)
+            .send(updateReminder)
+            .expect(204)
+        })
+
+        it(`responds with 400 when no required fields supplied`,()=>{
+          const idToUpdate = 2
+          return supertest(app)
+            .patch(`/api/reminders/${idToUpdate}`)
+            .send({ irrelevantField: 'foo' })
+            .expect(400, {
+              error: {
+                message: `Request body must contain either 'plant_id', 'user_id' or 'remind_on'`
+              }
+          })
+        })
+
+        it(`responds with 204 when updating only a subset of fields`, () => {
+          const idToUpdate = 2
+          const updateReminder= {
+            plant_id: 3,
+          }
+  
+          return supertest(app)
+            .patch(`/api/reminders/${idToUpdate}`)
+            .send({
+              ...updateReminder,
+              fieldToIgnore: 'should not be in GET response'
+            })
+            .expect(204)
+        })
+
+      })
+    })
 
 })
