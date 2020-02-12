@@ -14,7 +14,9 @@ VALUES
 
 INSERT INTO drip_drop_users (first_name,last_name,password,email,phone_number)
 VALUES
-    ('Megan','Wade','$2a$12$lHK6LVpc15/ZROZcKU00QeiD.RyYq5dVlV/9m4kKYbGibkRc5l4Ne','wademegan96@gmail.com','7739514325');
+    ('Megan','Wade','$2a$12$lHK6LVpc15/ZROZcKU00QeiD.RyYq5dVlV/9m4kKYbGibkRc5l4Ne','wademegan96@gmail.com','7739514325'),
+    ('Demo','User','$2a$12$lHK6LVpc15/ZROZcKU00QeiD.RyYq5dVlV/9m4kKYbGibkRc5l4Ne','test@gmail.com','7739514325');
+
 
 INSERT INTO drip_drop_reminders (plant_id,user_id,remind_on)
 VALUES  
