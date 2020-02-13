@@ -6,6 +6,7 @@ const RemindersService = {
             .from('drip_drop_reminders AS reminders')
             .select('*')
     },
+    //returns plant information based on reminders in the db 
     getByUserId(db,user_id){
         return db   
             .from('drip_drop_plants AS plant')
@@ -26,6 +27,7 @@ const RemindersService = {
             .returning('*')
             .then(([newReminder])=>newReminder)
     },
+    //deletes reminder based on plant_id and user_id
     deleteReminder(db,plant_id,user_id){
         return db   
             .from('drip_drop_reminders AS reminders')

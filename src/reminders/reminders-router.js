@@ -5,7 +5,6 @@ const RemindersService = require('./reminders-service')
 const remindersRouter = express.Router()
 const jsonBodyParser = express.json()
 
-
 remindersRouter 
     .route('/')
     .get((req,res,next)=>{
@@ -32,7 +31,6 @@ remindersRouter
             .then(reminder => {
                 res
                     .status(201)
-                    //.location(path.posix.join(req.originalUrl,`${reminder.id}`))
                     .json(RemindersService.serializeReminder(reminder))
             })
             .catch(next)
@@ -50,27 +48,8 @@ remindersRouter
             })
             .catch(next)
     })
-    /*.delete((req,res,next)=>{
-        RemindersService.deleteReminder(
-            req.app.get('db'),
-            req.params.user_id
-        )
-            .then(reminders=> {
-                res.json(plants.map(RemindersService.serializeReminder))
-            })
-            .catch(next)
-    })
-    .patch(jsonBodyParser,(req,res,next)=>{
-        const {plant_id,user_id} = req.body
-        const reminderToUpdate = {plant_id,user_id}
 
-        RemindersService.updateReminder(
-            req.app.get('db'),
-            req.params.reminder_id
-        )
-    })*/
-
-    remindersRouter 
+remindersRouter 
     .route('/:reminder_id')
     .patch(jsonBodyParser,(req,res,next)=>{
         const {plant_id,user_id,remind_on} = req.body

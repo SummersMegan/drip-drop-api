@@ -1,4 +1,5 @@
 const SmsService = {
+    //gets the information necessary to send sms message using twilio
     getAllSms(db){
         return db   
             .from('drip_drop_reminders AS reminder')

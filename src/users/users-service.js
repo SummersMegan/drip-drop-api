@@ -7,12 +7,6 @@ const UsersService = {
             .from('drip_drop_users')
             .select('*')
     },
-    /*getById(db,userId){
-        return db
-            .from('drip_drop_users AS users')
-            .select('*')
-            .where('users.id', userId)
-    },*/
     insertUser(db, newUser){
         return db
             .insert(newUser)
@@ -24,16 +18,16 @@ const UsersService = {
         const REGEX_UPPER_LOWER_NUMBER = /(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])[\S]+/
 
         if (password.length < 8) {
-            return 'Password be longer than 8 characters'
+            return 'Password must be longer than 8 characters'
         }
         if (password.length > 72) {
-            return 'Password be less than 72 characters'
+            return 'Password must be less than 72 characters'
         }
         if (password.startsWith(' ') || password.endsWith(' ')) {
             return 'Password must not start or end with empty spaces'
         }
         if (!REGEX_UPPER_LOWER_NUMBER.test(password)) {
-            return 'Password must contain one upper case, lower case, number'
+            return 'Password must contain one upper case, lower case, and number'
         }
         return null
     },
@@ -46,17 +40,6 @@ const UsersService = {
           .first()
           .then(user => !!user)
     },
-    /*deleteUser(db, userId){
-        return db   
-            .from('drip_drop_users')
-            .where('drip_drop_users.id',userId)
-            .delete()
-    },*/
-    /*updateUser(db,userId,newUserFields){
-        return db('drip_drop_user')
-        .where({id})
-        .update(newUserFields)
-    },*/
     serializeUser(user){
         return {
             id: user.id,
