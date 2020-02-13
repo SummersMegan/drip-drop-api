@@ -53,7 +53,7 @@ Run the tests `npm test`
 
 ## The Drip Drop Project
 
-## Live App
+### Live App
 
 A live version of the app can be accessed [here]().
 
@@ -61,7 +61,7 @@ To demo Drip Drop, log in with:
 * Email: test@gmail.com
 * Password: password
 
-## Summary
+### Summary
 
 Drip Drop is a web application that reminds users to water their houseplants. Users can select the plants they have from a list of common houseplants. Each day, Drip Drop will check to see if any of the user's plants will need to be watered. If so, Drip Drop will send the user a sms message as a reminder. The goal of Drip Drop is to make it easier for users to remember when they should be watering their plants, in order to prevent fewer houseplant deaths caused by over or under watering.
 
