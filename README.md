@@ -1,4 +1,4 @@
-# Drip Drop Api 
+# Drip Drop API
 
 ## Documentation
 
@@ -8,7 +8,7 @@ The Drip Drop API was built for use with drip-drop-client ([repo](https://github
 
 ### Base URL
 
-The base URL for the Drip Drop is: 
+The base URL for the Drip Drop API is: 
 https://desolate-oasis-71104.herokuapp.com/api
 
 ### Authentication 
@@ -51,5 +51,32 @@ Start nodemon for the application `npm run dev`
 
 Run the tests `npm test`
 
+## The Drip Drop Project
 
+## Live App
 
+A live version of the app can be accessed [here]().
+
+To demo Drip Drop, log in with:
+* Email: test@gmail.com
+* Password: password
+
+## Summary
+
+Drip Drop is a web application that reminds users to water their houseplants. Users can select the plants they have from a list of common houseplants. Each day, Drip Drop will check to see if any of the user's plants will need to be watered. If so, Drip Drop will send the user a sms message as a reminder. The goal of Drip Drop is to make it easier for users to remember when they should be watering their plants, in order to prevent fewer houseplant deaths caused by over or under watering.
+
+## Technologies Used
+
+### Front End: 
+* ReactJS
+* jQuery
+* HTML
+* CSS
+
+### Back End: 
+* Node.js
+* Express
+* PostgreSQL
+
+### APIs:
+* Twilio
