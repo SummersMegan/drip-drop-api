@@ -5,6 +5,7 @@ const authRouter = express.Router()
 const jsonBodyParser = express.json()
 
 authRouter
+  // used to login users to drip drop client and creates jwt is login info is correct
   .post('/login', jsonBodyParser, (req, res, next) => {
 
     const { email, password } = req.body

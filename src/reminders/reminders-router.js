@@ -7,6 +7,7 @@ const jsonBodyParser = express.json()
 
 remindersRouter 
     .route('/')
+    // get all reminders from drip_drop_reminders table
     .get((req,res,next)=>{
         RemindersService.getAllReminders(req.app.get('db'))
             .then(reminders => {
@@ -14,6 +15,7 @@ remindersRouter
             })
             .catch(next)
     })
+    // posts new reminder 
     .post(jsonBodyParser, (req,res,next)=>{
         const {plant_id, user_id, remind_on} = req.body
         const newReminder = {plant_id, user_id, remind_on}
@@ -38,6 +40,7 @@ remindersRouter
 
 remindersRouter 
     .route('/users/:user_id')
+    // returns plant information based on reminders in the db, specific to the user
     .get((req,res,next)=>{
         RemindersService.getByUserId(
             req.app.get('db'),
@@ -51,6 +54,7 @@ remindersRouter
 
 remindersRouter 
     .route('/:reminder_id')
+    // updates a reminder
     .patch(jsonBodyParser,(req,res,next)=>{
         const {plant_id,user_id,remind_on} = req.body
         const reminderToUpdate = {plant_id,user_id,remind_on}
@@ -76,6 +80,7 @@ remindersRouter
 
 remindersRouter 
     .route('/plants/:plant_id/users/:user_id')
+    //deletes reminder based on plant_id and user_id
     .delete((req,res,next)=>{
         RemindersService.deleteReminder(
             req.app.get('db'),

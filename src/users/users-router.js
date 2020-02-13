@@ -7,6 +7,7 @@ const jsonBodyParser = express.json()
 
 usersRouter 
     .route('/')
+    // get all reminders from the drip_drop_users table
     .get((req,res,next)=>{
         UsersService.getAllUsers(req.app.get('db'))
             .then(users => {
@@ -14,6 +15,7 @@ usersRouter
             })
             .catch(next)
     })
+    // creates a new user
     .post(jsonBodyParser,(req,res,next)=>{
         const { first_name, last_name, password, email, phone_number } = req.body
 

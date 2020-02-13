@@ -24,6 +24,7 @@ app.get('/', (req, res) => {
     res.send('Hello, world!')
 })
 
+// use the endpoints
 app.use('/api/plants',plantsRouter)
 app.use('/api/reminders',remindersRouter)
 app.use('/api/sms',smsRouter)

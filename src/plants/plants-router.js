@@ -7,6 +7,7 @@ const jsonBodyParser = express.json()
 
 plantsRouter 
     .route('/')
+    // gets all plants from drip_drop_plants table
     .get((req,res,next)=>{
         PlantsService.getAllPlants(req.app.get('db'))
             .then(plants => {
@@ -14,6 +15,7 @@ plantsRouter
             })
             .catch(next)
     })
+    // creates a new plant
     .post(jsonBodyParser,(req,res,next)=>{
         const { name, water_every, watering_directions, img } = req.body
         const newPlant = { name, water_every, watering_directions, img }
