@@ -20,7 +20,7 @@ VALUES
 
 INSERT INTO drip_drop_reminders (plant_id,user_id,remind_on)
 VALUES  
-    (1,1,'2020-01-31'),
+    (1,1,now()),
     (3,1,now());
 
 COMMIT;
