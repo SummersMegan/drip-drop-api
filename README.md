@@ -1,10 +1,10 @@
 # Drip Drop API
 
+## Use
+
+The Drip Drop API was built for use with drip-drop-client ([repo](https://github.com/WadeMegan/drip-drop)/[live app](https://drip-drop.now.sh/)) and drip-drop-send-sms ([repo](https://github.com/WadeMegan/drip-drop-send-sms)). 
+
 ## Documentation
-
-### Use
-
-The Drip Drop API was built for use with drip-drop-client ([repo](https://github.com/WadeMegan/drip-drop)/[live app](https://build-zeta.now.sh/)) and drip-drop-send-sms ([repo](https://github.com/WadeMegan/drip-drop-send-sms)). 
 
 ### Base URL
 
@@ -55,7 +55,7 @@ Run the tests `npm test`
 
 ### Live App
 
-A live version of the app can be accessed [here]().
+A live version of the app can be accessed [here](https://drip-drop.now.sh/).
 
 To demo Drip Drop, log in with:
 * Email: test@gmail.com
@@ -80,3 +80,4 @@ Drip Drop is a web application that reminds users to water their houseplants. Us
 
 #### APIs:
 * Twilio
+* Drip Drop API
